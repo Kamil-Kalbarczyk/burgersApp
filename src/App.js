@@ -1,8 +1,10 @@
 import {Navigation} from './navigation'
+import {Content} from './content'
 function App() {
-  return (
+  return <>
     <Navigation />
-  );
+    <Content />
+    </>
 }
 
 export default App;
