@@ -1,7 +1,7 @@
-
+import {Navigation} from './navigation'
 function App() {
   return (
-  <h1>Burger app</h1>
+    <Navigation />
   );
 }
 
