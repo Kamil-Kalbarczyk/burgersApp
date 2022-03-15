@@ -8,6 +8,12 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button'
 
+const navItems = [
+  {label: 'Home', path: '/'},
+  {label: 'Menu', path: '/menu'},
+  {label: 'Admin', path: '/admin'}
+]
+
 export const Navigation = () => {
   return (
     <AppBar position="static">
@@ -16,15 +22,11 @@ export const Navigation = () => {
               <IconButton sx={{ p: 0 }}>
                 <Avatar variant="rounded" alt="Remy Sharp" src="https://cdn-icons-png.flaticon.com/512/877/877951.png" />
               </IconButton>
-              <Button component={Link} to='/' sx={{my:2, color:'white'}}>
-                  Home
-              </Button>
-              <Button component={Link} to='/menu' sx={{my:2, color:'white'}}>
-                  Menu
-              </Button>
-              <Button component={Link} to='/admin' sx={{my:2, color:'white'}}>
-                  Admin
-              </Button>
+              {navItems.map((item)=>(
+                <Button key={item.label} component={Link} to={item.path} sx={{my:2, color:'white'}}>
+                  {item.label}
+                </Button>
+              ))}
         </Toolbar>
       </Container>
     </AppBar>
