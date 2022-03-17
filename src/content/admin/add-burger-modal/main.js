@@ -6,9 +6,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
-export const AddBurgerForm = ({handleClose}) => {
-    // const [open, setOpen] = useState(false);
-
+export const AddBurgerForm = ({handleClose, refresh}) => {
     const [formData, setFormData] = useState({
         name: '',
         ingredients: '',
@@ -23,10 +21,17 @@ export const AddBurgerForm = ({handleClose}) => {
             [e.target.name]: e.target.value
         })
     }
-  
-    // const handleClose = () => {
-    //   setOpen(false);
-    // };
+
+    const handleAdd = () => {
+        fetch('https://rest-api-b6410.firebaseio.com/burgers.json', {
+            method: 'POST',
+            body: JSON.stringify(formData)
+        })
+            .then(()=>{
+                refresh()
+                handleClose()
+            })
+    }
     return (
         <>
     <DialogTitle>Add burger</DialogTitle>
@@ -68,7 +73,7 @@ export const AddBurgerForm = ({handleClose}) => {
     </DialogContent>
     <DialogActions>
       <Button onClick={handleClose}>Cancel</Button>
-      <Button variant='contained' onClick={handleClose}>Add</Button>
+      <Button variant='contained' onClick={handleAdd}>Add</Button>
     </DialogActions>
     </>
     )

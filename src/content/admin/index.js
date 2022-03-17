@@ -13,13 +13,17 @@ import Paper from '@mui/material/Paper';
 export const Admin = () => {
     const [ burgers, setBurgers ] = useState([]);
 
+    const fetchBurgers = () => {
+      fetch('https://rest-api-b6410.firebaseio.com/burgers.json')
+      .then((response)=> response.json())
+      .then(data => {
+          const formattedData = Object.keys(data).map((key) => ({id: key, ...data[key]}))
+          setBurgers(formattedData);
+      })
+    }
+
     useEffect(()=>{
-        fetch('https://rest-api-b6410.firebaseio.com/burgers.json')
-            .then((response)=> response.json())
-            .then(data => {
-                const formattedData = Object.keys(data).map((key) => ({id: key, ...data[key]}))
-                setBurgers(formattedData);
-            })
+      fetchBurgers();
     },[])
 
     return <PageWrapper title="Admin">
@@ -43,6 +47,6 @@ export const Admin = () => {
         </TableBody>
       </Table>
     </TableContainer>
-    <AddBurgerModal />
+    <AddBurgerModal refresh={fetchBurgers}/>
     </PageWrapper>
 }

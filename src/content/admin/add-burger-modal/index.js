@@ -16,7 +16,7 @@ margin-top: 15px;
 align-self: flex-end;
 `
 
-export const AddBurgerModal = () => {
+export const AddBurgerModal = ( {refresh} ) => {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -35,7 +35,7 @@ export const AddBurgerModal = () => {
       </Fab>
       </AddBurgerContainer>
       <Dialog open={open} onClose={handleClose}>
-        <AddBurgerForm handleClose={handleClose} />
+        <AddBurgerForm handleClose={handleClose} refresh={refresh}/>
       </Dialog>
     </>
   );
