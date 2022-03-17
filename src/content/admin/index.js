@@ -1,4 +1,5 @@
 import {PageWrapper} from '../../common/page-wrapper'
+import { AddBurgerModal } from './add-burger-modal';
 import { useEffect, useState } from "react";
 import * as React from 'react';
 import Table from '@mui/material/Table';
@@ -42,5 +43,6 @@ export const Admin = () => {
         </TableBody>
       </Table>
     </TableContainer>
+    <AddBurgerModal />
     </PageWrapper>
 }
