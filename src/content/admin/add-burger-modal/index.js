@@ -1,3 +1,4 @@
+import {AddBurgerForm} from './main'
 import { useState } from 'react';
 import * as React from 'react';
 import styled from 'styled-components'
@@ -34,40 +35,7 @@ export const AddBurgerModal = () => {
       </Fab>
       </AddBurgerContainer>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Add burger</DialogTitle>
-        <DialogContent>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Name"
-            type="text"
-            fullWidth
-            variant="standard"
-          />
-           <TextField
-            autoFocus
-            margin="dense"
-            id="ingredients"
-            label="Ingredients"
-            type="text"
-            fullWidth
-            variant="standard"
-          />
-            <TextField
-            autoFocus
-            margin="dense"
-            id="price"
-            label="Price"
-            type="text"
-            fullWidth
-            variant="standard"
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button variant='contained' onClick={handleClose}>Add</Button>
-        </DialogActions>
+        <AddBurgerForm handleClose={handleClose} />
       </Dialog>
     </>
   );
