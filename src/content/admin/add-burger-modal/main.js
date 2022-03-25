@@ -10,10 +10,11 @@ export const AddBurgerForm = ({handleClose, refresh}) => {
     const [formData, setFormData] = useState({
         name: '',
         ingredients: '',
-        price: ''
+        price: '',
+        url: ''
     })
 
-    const {name, ingredients, price} = formData
+    const {name, ingredients, price, url} = formData
 
     const handleChange = (e) => {
         setFormData({
@@ -68,6 +69,17 @@ export const AddBurgerForm = ({handleClose, refresh}) => {
         fullWidth
         variant="standard"
         value={price}
+        onChange={handleChange}
+      />
+              <TextField
+        margin="dense"
+        id="url"
+        name='url'
+        label="url"
+        type="text"
+        fullWidth
+        variant="standard"
+        value={url}
         onChange={handleChange}
       />
     </DialogContent>
